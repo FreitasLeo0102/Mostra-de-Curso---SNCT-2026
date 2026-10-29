@@ -1,0 +1,808 @@
+/* ========================================
+   Base and shared tokens
+   ======================================== */
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --purple: #7725FA;
+  --bar-blue: #1000a8;
+  --frame: #c8c8df;
+  --text: #f5f2ff;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: "Pixelify Sans", monospace;
+  color: var(--text);
+  background: #07091b;
+  overflow-y: hidden;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+/* ========================================
+   Desktop and shortcut icons
+   ======================================== */
+.desktop {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 119px 4.05vw 42px;
+  background-image: url("assets/background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Image shortcuts shown on the desktop. */
+.desktop-icons {
+  position: absolute;
+  top: 30px;
+  left: 5.1vw;
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.desktop-icon {
+  padding: 0;
+  border: 0;
+  color: white;
+  background: transparent;
+  text-shadow: 1px 2px #000;
+  font-size: 16px;
+  line-height: 1.05;
+  text-align: center;
+}
+
+.desktop-icon-image {
+  display: block;
+  width: 54px;
+  height: 44px;
+  margin: 0 auto 4px;
+  filter: drop-shadow(2px 3px 0 #24213e);
+}
+/* ========================================
+   Main application window
+   ======================================== */
+.window {
+  width: 100%;
+  height: clamp(430px, 70vh, 680px);
+  min-height: 0;
+  padding: 8px 11px 15px;
+  display: flex;
+  flex-direction: column;
+  background: var(--frame);
+  border-radius: 1px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.25), 0 18px 38px rgba(0,0,0,.38);
+}
+
+.title-bar {
+  height: 27px;
+  padding: 2px 7px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  background: var(--bar-blue);
+  border: 1px solid #25205b;
+}
+
+.window-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.tiny-computer {
+  color: #8e53ff;
+  text-shadow: 1px 1px #000;
+}
+
+.window-controls {
+  display: flex;
+  gap: 7px;
+}
+
+.window-control {
+  display: grid;
+  place-items: center;
+  width: 23px;
+  height: 19px;
+  padding: 0;
+  border: 1px solid #e8e8e8;
+  border-right-color: #555;
+  border-bottom-color: #555;
+  border-radius: 0;
+  color: #080808;
+  background: #d7d7d7;
+  font-family: Arial, sans-serif;
+  font-weight: 900;
+  font-size: 19px;
+  line-height: 1;
+}
+.window-control:active {
+  border: 1px solid #555;
+  border-right-color: #eee;
+  border-bottom-color: #eee;
+}
+.maximize { font-size: 18px; }
+.minimize { font-size: 15px; padding-bottom: 5px; }
+.close { font-size: 23px; }
+
+.window-content {
+  position: relative;
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  margin-top: 35px;
+  overflow: hidden;
+  background: #000;
+  border-radius: 1px;
+}
+
+.window-view {
+  position: absolute;
+  inset: 0;
+  display: none;
+  padding: 39px 5.2%;
+  .visits-view {
+    overflow-y: scroll;
+
+  }
+}
+.window-view.is-active { display: block; }
+.info-view.is-active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 760px;
+}
+.info-view h2 {
+  margin: 0 0 14px;
+  color: var(--purple);
+  font-size: clamp(35px, 4.7vw, 58px);
+  line-height: 1;
+}
+.window-description {
+  max-width: 620px;
+  margin: 0 0 18px;
+  font-size: clamp(18px, 2vw, 25px);
+  line-height: 1.2;
+}
+.window-list {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding-left: 26px;
+  color: #ded6ff;
+  font-size: clamp(17px, 1.8vw, 23px);
+}
+
+/* ========================================
+   Projects view
+   ======================================== */
+.projects-view {
+  padding: 0;
+}
+.projects-view .window-controls {
+  display: none;
+}
+.projects-area {
+  width: 100%;
+  height: 100%;
+  padding: 26px 30px;
+  overflow-y: auto;
+  scrollbar-color: #8b4cff #1a1640;
+  scrollbar-width: auto;
+}
+.folder-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+  gap: 26px 20px;
+  align-items: start;
+}
+.project-folder {
+  display: grid;
+  justify-items: center;
+  gap: 7px;
+  min-width: 0;
+  padding: 8px 4px;
+  color: white;
+  font-size: 17px;
+  line-height: 1.05;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 1px 2px #000;
+}
+.project-folder img {
+  width: min(100%, 112px);
+  height: auto;
+  image-rendering: pixelated;
+  filter: drop-shadow(2px 3px 0 #24213e);
+}
+.project-folder:hover,
+.project-folder:focus-visible {
+  outline: 1px dotted #fff;
+  outline-offset: 2px;
+  background: rgba(119, 37, 250, .28);
+}
+.projects-area::-webkit-scrollbar {
+  width: 17px;
+}
+.projects-area::-webkit-scrollbar-track {
+  border-left: 2px solid #5b5487;
+  background: repeating-linear-gradient(0deg, #161333 0 4px, #201c49 4px 8px);
+}
+.projects-area::-webkit-scrollbar-thumb {
+  border: 3px outset #b7a9ff;
+  background: #7725fa;
+}
+.projects-area::-webkit-scrollbar-thumb:hover {
+  background: #9a5cff;
+}
+
+/* ========================================
+   Projects and events view
+   ======================================== */
+.events-view.is-active {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  padding: 15px;
+  overflow-y: auto;
+  background: #777;
+}
+.event-panel {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: 7px;
+  border: 3px outset #eee;
+  background: var(--frame);
+  color: #111;
+}
+.event-logo-box {
+  display: grid;
+  height: 128px;
+  place-items: center;
+  padding: 10px;
+  border: 2px inset #eee;
+  background: #080b2b;
+}
+.event-logo-box img {
+  display: block;
+  width: 10rem;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+}
+.event-copy { padding: 12px 7px 7px; }
+.event-copy h2 {
+  margin: 0 0 8px;
+  color: var(--bar-blue);
+  font-size: clamp(26px, 3vw, 38px);
+  line-height: 1;
+}
+.event-copy p {
+  margin: 0 0 9px;
+  font-size: clamp(16px, 1.55vw, 20px);
+  line-height: 1.15;
+}
+.event-copy .event-note {
+  padding: 7px;
+  border: 2px inset #eee;
+  color: #12006f;
+  background: #fff29a;
+}
+.event-gallery {
+  display: flex;
+  gap: 10px;
+  min-height: 0;
+  margin-top: auto;
+  overflow-x: auto;
+  padding: 7px 7px 16px;
+  border: 2px inset #eee;
+  background: #07091b;
+  scrollbar-color: #d7d7d7 #777;
+  scrollbar-width: auto;
+}
+.event-gallery figure {
+  flex: 0 0 185px;
+  margin: 0;
+}
+.event-photo-placeholder {
+  display: grid;
+  aspect-ratio: 4 / 3;
+  place-items: center;
+  border: 3px inset #eee;
+  color: #111;
+  background: repeating-linear-gradient(45deg, #d7d7d7 0 8px, #bbb 8px 16px);
+  font-size: 16px;
+}
+.event-gallery figcaption {
+  margin-top: 5px;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+}
+.event-gallery::-webkit-scrollbar { height: 16px; }
+.event-gallery::-webkit-scrollbar-track { background: #777; }
+.event-gallery::-webkit-scrollbar-thumb {
+  border: 3px outset #eee;
+  background: #d7d7d7;
+}
+
+/* ========================================
+   Technical visits view
+   ======================================== */
+
+
+/* ========================================
+   JANELA DE VISITAS
+======================================== */
+
+/* Janela principal quando a seção de visitas está aberta */
+.window.is-visits-view {
+    width: 100%;
+    height: clamp(520px, 82vh, 820px);
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+}
+
+/* Área interna da janela */
+.window.is-visits-view .window-content {
+    display: flex;
+    flex: 1 1 auto;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* Seção de visitas: ocupa a largura inteira */
+.window.is-visits-view .window-view[data-view="visits"] {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+/* Cada visita ocupa toda a largura da seção */
+.window.is-visits-view .visit-record {
+    display: grid;
+    grid-template-columns: minmax(170px, 27%) minmax(0, 1fr);
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    min-height: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 9px;
+    gap: 10px;
+}
+
+/* Impede que o carrossel seja espremido */
+.window.is-visits-view .visit-gallery {
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+
+/* ========================================
+   LADO ESQUERDO: LOCAL E ANO
+======================================== */
+
+.window.is-visits-view .visit-meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    min-width: 0;
+    padding: 16px;
+    border: 2px inset #eee;
+
+    color: white;
+    background: var(--bar-blue, #1000a8);
+    overflow-wrap: anywhere;
+}
+
+.window.is-visits-view .visit-meta p {
+    margin: 0 0 12px;
+    color: #d8ceff;
+    font-size: 16px;
+}
+
+.window.is-visits-view .visit-meta h2 {
+    margin: 0 0 16px;
+    color: white;
+    font-size: clamp(22px, 2.5vw, 34px);
+    line-height: 1.1;
+}
+
+.window.is-visits-view .visit-meta time {
+    color: #fff29a;
+    font-size: 25px;
+}
+
+/* ========================================
+   LADO DIREITO: CARROSSEL
+======================================== */
+
+.window.is-visits-view .visit-gallery {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 10px 10px 18px;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    border: 2px inset #eee;
+    background: #07091b;
+
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    scrollbar-color: #d7d7d7 #777;
+    scrollbar-width: auto;
+}
+
+/* Cada foto ocupa quase toda a largura
+   disponível no carrossel. */
+
+.window.is-visits-view .visit-photo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    flex: 0 0 82%;
+    min-width: 0;
+    height: 100%;
+    margin: 0;
+
+    scroll-snap-align: start;
+}
+
+/* Imagem */
+
+.window.is-visits-view .visit-photo img {
+    display: block;
+    width: 100%;
+    height: 85%;
+    min-height: 0;
+    object-fit: contain;
+
+    background: #111;
+    border: 3px inset #eee;
+}
+
+/* Legenda */
+
+.window.is-visits-view .visit-photo figcaption {
+    flex: 0 0 auto;
+    margin-top: 7px;
+
+    color: white;
+    font-family: "Pixelify Sans", monospace;
+    font-size: 16px;
+    text-align: center;
+    text-shadow: 1px 2px #000;
+}
+
+/* ========================================
+   BARRA DE ROLAGEM VERTICAL
+======================================== */
+
+.window.is-visits-view .visits-view::-webkit-scrollbar {
+    width: 17px;
+}
+
+.window.is-visits-view .visits-view::-webkit-scrollbar-track {
+    border-left: 2px solid #555;
+    background: #777;
+}
+
+.window.is-visits-view .visits-view::-webkit-scrollbar-thumb {
+    border: 3px outset #eee;
+    background: #d7d7d7;
+}
+
+/* ========================================
+   BARRA DE ROLAGEM HORIZONTAL
+======================================== */
+
+.window.is-visits-view .visit-gallery::-webkit-scrollbar {
+    height: 16px;
+}
+
+.window.is-visits-view .visit-gallery::-webkit-scrollbar-track {
+    border-top: 2px solid #555;
+    background: #777;
+}
+
+.window.is-visits-view .visit-gallery::-webkit-scrollbar-thumb {
+    border: 3px outset #eee;
+    background: #d7d7d7;
+}
+
+.window.is-visits-view .visit-gallery::-webkit-scrollbar-thumb:hover {
+    background: #eee;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 600px) {
+    .window.is-visits-view {
+        height: 82vh;
+        min-height: 500px;
+    }
+
+    .window.is-visits-view .visit-record {
+        grid-template-columns: minmax(100px, 30%) minmax(0, 1fr);
+        gap: 6px;
+        padding: 6px;
+    }
+
+    .window.is-visits-view .visit-meta {
+        padding: 8px;
+    }
+
+    .window.is-visits-view .visit-meta p {
+        font-size: 12px;
+    }
+
+    .window.is-visits-view .visit-meta h2 {
+        font-size: 20px;
+    }
+
+    .window.is-visits-view .visit-meta time {
+        font-size: 20px;
+    }
+
+    .window.is-visits-view .visit-gallery {
+        gap: 8px;
+        padding: 6px 6px 14px;
+    }
+
+    .window.is-visits-view .visit-photo {
+        flex-basis: 95%;
+    }
+
+    .window.is-visits-view .visit-photo figcaption {
+        font-size: 13px;
+    }
+}
+
+
+/* CELULARES */
+@media (max-width: 600px) {
+    .window.is-visits-view {
+        height: 82vh;
+        min-height: 500px;
+    }
+
+    .visit-record {
+        grid-template-columns: minmax(105px, 30%) minmax(0, 1fr);
+        gap: 6px;
+        padding: 6px;
+    }
+
+    .visit-meta {
+        padding: 8px;
+    }
+
+    .visit-meta p {
+        font-size: 12px;
+    }
+
+    .visit-meta h2 {
+        font-size: 20px;
+    }
+
+    .visit-meta time {
+        font-size: 20px;
+    }
+
+    .visit-record .visit-gallery {
+        gap: 8px;
+        padding: 6px 6px 14px;
+    }
+
+    .visit-photo {
+        flex-basis: 95%;
+    }
+
+    .visit-photo figcaption {
+        font-size: 13px;
+    }
+}
+
+
+/* ========================================
+   Course hero
+   ======================================== */
+.hero-copy {
+  position: relative;
+  z-index: 1;
+}
+.eyebrow {
+  margin: 0 0 7px;
+  color: var(--purple);
+  font-size: clamp(27px, 3.4vw, 43px);
+  font-weight: 700;
+  line-height: 1;
+}
+h1 {
+  margin: 0;
+  color: var(--purple);
+  font-size: clamp(42px, 5.6vw, 66px);
+  font-weight: 700;
+  line-height: 1.05;
+}
+.hero-intro {
+  max-width: 510px;
+  margin: 16px 0 0;
+  color: #ded6ff;
+  font-size: clamp(17px, 1.8vw, 23px);
+  line-height: 1.2;
+}
+
+.computer-image {
+  position: absolute;
+  right: -5%;
+  bottom: 0;
+  width: min(58%, 680px);
+  height: 92%;
+  z-index: 0;
+}
+.computer-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: right bottom;
+  transform: scalex(-1);
+}
+
+/* ========================================
+   Close confirmation dialog
+   ======================================== */
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, .57);
+}
+.confirm-overlay.is-open { display: flex; }
+
+.confirm-window {
+  width: min(440px, 100%);
+  padding: 8px 9px 14px;
+  background: var(--frame);
+  border: 1px solid #efefff;
+  box-shadow: 0 14px 50px rgba(0,0,0,.65);
+  color: #111;
+}
+.confirm-titlebar { margin-bottom: 17px; }
+.confirm-content {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  min-height: 95px;
+  padding: 8px 16px;
+  background: #050505;
+  color: white;
+}
+.warning-icon {
+  flex: 0 0 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  border: 3px solid var(--purple);
+  color: var(--purple);
+  font-size: 30px;
+  font-weight: 700;
+}
+.confirm-message h2 {
+  margin: 0 0 8px;
+  color: var(--purple);
+  font-size: 27px;
+}
+.confirm-message p {
+  margin: 0;
+  font-size: 17px;
+}
+.confirm-actions {
+  position: relative;
+  min-height: 45px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  margin: 15px 8px 0;
+}
+.pixel-button {
+  min-width: 108px;
+  min-height: 32px;
+  padding: 5px 10px;
+  color: white;
+  background: var(--bar-blue);
+  border: 2px outset #eee;
+  font-size: 16px;
+}
+.pixel-button.secondary {
+  color: #111;
+  background: #d7d7d7;
+}
+.pixel-button:active { border-style: inset; }
+
+/* ========================================
+   Small screens
+   ======================================== */
+@media (max-width: 650px) {
+  .desktop { padding: 125px 12px 24px; }
+  .desktop-icons { left: 15px; gap: 13px; }
+  .window { height: calc(100vh - 170px); min-height: 430px; padding: 7px; }
+  .window-title { font-size: 12px; gap: 4px; }
+  .window-controls { gap: 3px; }
+  .window-control { width: 20px; }
+  .window-content { min-height: 350px; margin-top: 22px; }
+  .window-view { padding: 28px 18px; }
+  .projects-view { padding: 0; }
+  .projects-area { padding: 22px 18px; }
+  .folder-grid { grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 20px 12px; }
+  .events-view.is-active { grid-template-columns: 1fr; padding: 8px; }
+  .window.is-visits-view { height: calc(100vh - 125px); }
+  .visit-gallery { gap: 10px; margin: 0 3px 3px; }
+  .visit-photo { flex-basis: min(72vw, 280px); }
+  .visits-view.is-active { padding: 0; }
+  .visit-record { grid-template-columns: 120px minmax(0, 1fr); min-height: 100%; height: 100%; gap: 4px; padding: 3px; margin: 0; }
+  .visit-meta { padding: 6px; }
+  .visit-meta p { margin-bottom: 5px; font-size: 12px; }
+  .visit-meta h2 { margin-bottom: 7px; font-size: 17px; }
+  .visit-meta time { font-size: 18px; }
+  .visit-record .visit-gallery { min-height: 0; }
+  .eyebrow { font-size: clamp(23px, 6vw, 34px); }
+  h1 { font-size: clamp(38px, 10vw, 55px); }
+  .computer-image { right: 3%; width: 82%; }
+}

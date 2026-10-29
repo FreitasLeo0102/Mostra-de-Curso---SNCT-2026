@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <!-- Metadados, fonte e estilos globais -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mostra de Curso - Informática</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="desktop" aria-label="Área de trabalho">
+    <!-- Atalhos da área de trabalho -->
+    <div class="desktop-icons">
+      <button class="desktop-icon" type="button" data-window-view="course" aria-controls="window-content"
+        aria-pressed="true">
+        <img class="desktop-icon-image" src="assets/folder - aberto.png" alt="">
+        <span>Mostra de<br>curso</span>
+      </button>
+      <button class="desktop-icon" type="button" data-window-view="projects" aria-controls="window-content"
+        aria-pressed="false">
+        <img class="desktop-icon-image" src="assets/folder - fechado.png" alt="">
+        <span>Projetos</span>
+      </button>
+      <button class="desktop-icon" type="button" data-window-view="visits" aria-controls="window-content"
+        aria-pressed="false">
+        <img class="desktop-icon-image" src="assets/folder - fechado.png" alt="">
+        <span>Visitas<br>tecnicos</span>
+      </button>
+      <button class="desktop-icon" type="button" data-window-view="events" aria-controls="window-content"
+        aria-pressed="false">
+        <img class="desktop-icon-image" src="assets/folder - fechado.png" alt="">
+        <span>Projetos<br>e eventos</span>
+      </button>
+    </div>
+
+    <!-- Janela principal da aplicação -->
+    <section class="window" aria-label="Mostra de Curso - Informática">
+      <!-- Barra de título e controles da janela -->
+      <header class="title-bar">
+        <div class="window-title"><span class="tiny-computer">▣</span><span>· Mostra de Curso - Informática</span></div>
+        <div class="window-controls">
+          <button type="button" class="window-control minimize" aria-label="Minimizar">_</button>
+          <button type="button" class="window-control maximize" aria-label="Maximizar">□</button>
+          <button type="button" class="window-control close" id="open-confirm" aria-label="Fechar">×</button>
+        </div>
+      </header>
+
+      <!-- Conteúdo que muda ao selecionar um atalho -->
+      <div class="window-content" id="window-content">
+        <!-- Tela inicial: Mostra de Curso -->
+        <section class="window-view is-active" data-view="course">
+          <div class="hero-copy">
+            <p class="eyebrow">mostra de cursos</p>
+            <h1>Informática</h1>
+            <p class="hero-intro">Nesta mostra, você vai conhecer um pouco do que aprendemos, criamos e vivenciamos
+              durante o curso de Informática.</p>
+          </div>
+          <div class="computer-image">
+            <img src="assets/computador - hero.png" alt="Imagem de um computador">
+          </div>
+        </section>
+
+        <!-- Tela de Projetos -->
+        <section class="window-view projects-view" data-view="projects" hidden>
+          <div class="window-controls">
+            <button class="window-control minimize" aria-label="Minimizar">_</button>
+            <button class="window-control maximize" aria-label="Maximizar">□</button>
+            <button class="window-control close" aria-label="Fechar">×</button>
+          </div>
+
+          <!-- Grade de pastas dos projetos -->
+          <div class="projects-area">
+            <div class="folder-grid">
+
+              <a class="project-folder" href="https://aop-personagens-k6j3lj8zf-freitasleo0102s-projects.vercel.app/"
+                target="_blank">
+                <img src="assets/folder - fechado.png" alt="Pasta">
+                <span>Ordem Paranormal Personagens</span>
+              </a>
+
+              <a class="project-folder" href="https://youssefjadallah.github.io/trabalho-naruto/" target="_blank">
+                <img src="assets/folder - fechado.png" alt="Pasta">
+                <span>Naruto Personagens</span>
+              </a>
+
+              <a class="project-folder" href="https://dandadansiteanalygia.netlify.app/" target="_blank">
+                <img src="assets/folder - fechado.png" alt="Pasta">
+                <span>Dandandan Personagens</span>
+              </a>
+
+              <a class="project-folder" href="http://soso-no-frieren.vercel.app/" target="_blank">
+                <img src="assets/folder - fechado.png" alt="Pasta">
+                <span>Soso no Frieren</span>
+              </a>
+
+              <a class="project-folder" href="https://filipeavila88.github.io/Death-Metal/" target="_blank">
+                <img src="assets/folder - fechado.png" alt="Pasta">
+                <span>Death Metal</span>
+              </a>
+
+              <a class="project-folder" href="https://freitasleo0102.github.io/Central-Perk/" target="_blank">
+                <img src="assets/folder - fechado.png" alt="Pasta">
+                <span>Central Perk</span>
+              </a>
+
+              <a class="project-folder" href="https://ggfiuza.github.io/Projeto-Hogwarts/" target="_blank">
+                <img src="assets/folder - fechado.png" alt="Pasta">
+                <span>Projeto Hogwarts</span>
+              </a>
+
+              <a class="project-folder" href="https://flausionunes.github.io/microtech/" target="_blank">
+                <img src="assets/folder - fechado.png" alt="Pasta">
+                <span>Minecraft</span>
+              </a>
+
+              <a class="project-folder" href="#">
+                <img src="assets/folder - fechado.png" alt="Pasta">
+                <span>Projeto 9</span>
+              </a>
+
+              <a class="project-folder" href="https://youssefjadallah.github.io/trabalhofinalizadosobrenatural/#cases"
+                target="_blank">
+                <img src="assets/folder - fechado.png" alt="Pasta">
+                <span>Supernatural</span>
+              </a>
+
+              <a class="project-folder" href="https://freitasleo0102.github.io/Blog-do-Tio-Gil/" target="_blank">
+                <img src="assets/folder - fechado.png" alt="Pasta">
+                <span>Blog do Tio Gil</span>
+              </a>
+
+              <a class="project-folder" href="#">
+                <img src="assets/folder - fechado.png" alt="Pasta">
+                <span>Projeto 12</span>
+              </a>
+
+              <a class="project-folder" href="#">
+                <img src="assets/folder - fechado.png" alt="Pasta">
+                <span>Projeto 13</span>
+              </a>
+
+              <a class="project-folder" href="#">
+                <img src="assets/folder - fechado.png" alt="Pasta">
+                <span>Projeto 14</span>
+              </a>
+
+              <a class="project-folder" href="#">
+                <img src="assets/folder - fechado.png" alt="Pasta">
+                <span>Projeto 15</span>
+              </a>
+
+              <a class="project-folder" href="#">
+                <img src="assets/folder - fechado.png" alt="Pasta">
+                <span>Projeto 16</span>
+              </a>
+
+              <a class="project-folder" href="#">
+                <img src="assets/folder - fechado.png" alt="Pasta">
+                <span>Projeto 17</span>
+              </a>
+
+              <a class="project-folder" href="#">
+                <img src="assets/folder - fechado.png" alt="Pasta">
+                <span>Projeto 18</span>
+              </a>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- Tela de Projetos e Eventos -->
+        <section class="window-view events-view" data-view="events" hidden>
+          <article class="event-panel farmando-panel">
+            <div class="event-logo-box"><img src="assets/FXP - logo.png" alt="Logo Farmando XP"></div>
+            <div class="event-copy">
+              <h2>Farmando XP</h2>
+              <p>Um projeto formado inteiramente por alunos de Informática.</p>
+              <p>Aqui criamos sites e, agora, também jogos.</p>
+              <p class="event-note">Quer saber mais? No Lab 04, o projeto terá sua própria mostra.</p>
+            </div>
+          </article>
+          </article>
+          <article class="event-panel nerd-panel">
+            <div class="event-logo-box"><img src="assets/Dia nerd - logo.png" alt="Logo do Dia Nerd"></div>
+            <div class="event-copy">
+              <h2>Dia Nerd</h2>
+              <p>Evento do IF organizado por alunos de todos os cursos, com grande participação da Informática.</p>
+              <p>Tem campeonatos de videogame, jogos retrô, dinâmicas e concursos de cosplay.</p>
+            </div>
+          </article>
+        </section>
+
+        <!-- Tela de Visitas Técnicas -->
+        <section class="window-view visits-view" data-view="visits" hidden>
+          <!-- Lista rolável de visitas e seus carrosséis -->
+
+          <article class="visit-record">
+            <div class="visit-meta">
+              <p>Visita técnica</p>
+              <h2>Nome do local 1</h2>
+              <time datetime="2021">2021</time>
+            </div>
+            <div class="visit-gallery">
+              <figure class="visit-photo">
+                <img src="assets/visitas/visita1-1.jpg" alt="Foto da primeira visita">
+                <figcaption>Foto 1</figcaption>
+              </figure>
+              <figure class="visit-photo">
+                <img src="assets/visitas/visita1-2.jpg" alt="Foto da primeira visita">
+                <figcaption>Foto 2</figcaption>
+              </figure>
+              <figure class="visit-photo">
+                <img src="assets/visitas/visita1-3.jpg" alt="Foto da primeira visita">
+                <figcaption>Foto 3</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <article class="visit-record">
+            <div class="visit-meta">
+              <p>Visita técnica</p>
+              <h2>Nome do local 2</h2>
+              <time datetime="2022">2022</time>
+            </div>
+            <div class="visit-gallery">
+              <figure class="visit-photo">
+                <img src="assets/visitas/visita2-1.jpg" alt="Foto da segunda visita">
+                <figcaption>Foto 1</figcaption>
+              </figure>
+              <figure class="visit-photo">
+                <img src="assets/visitas/visita2-2.jpg" alt="Foto da segunda visita">
+                <figcaption>Foto 2</figcaption>
+              </figure>
+              <figure class="visit-photo">
+                <img src="assets/visitas/visita2-3.jpg" alt="Foto da segunda visita">
+                <figcaption>Foto 3</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <article class="visit-record">
+            <div class="visit-meta">
+              <p>Visita técnica</p>
+              <h2>Nome do local 3</h2>
+              <time datetime="2023">2023</time>
+            </div>
+            <div class="visit-gallery">
+              <figure class="visit-photo">
+                <img src="assets/visitas/visita3-1.jpg" alt="Foto da terceira visita">
+                <figcaption>Foto 1</figcaption>
+              </figure>
+              <figure class="visit-photo">
+                <img src="assets/visitas/visita3-2.jpg" alt="Foto da terceira visita">
+                <figcaption>Foto 2</figcaption>
+              </figure>
+              <figure class="visit-photo">
+                <img src="assets/visitas/visita3-3.jpg" alt="Foto da terceira visita">
+                <figcaption>Foto 3</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <article class="visit-record">
+            <div class="visit-meta">
+              <p>Visita técnica</p>
+              <h2>Nome do local 4</h2>
+              <time datetime="2024">2024</time>
+            </div>
+            <div class="visit-gallery">
+              <figure class="visit-photo">
+                <img src="assets/visitas/visita4-1.jpg" alt="Foto da quarta visita">
+                <figcaption>Foto 1</figcaption>
+              </figure>
+              <figure class="visit-photo">
+                <img src="assets/visitas/visita4-2.jpg" alt="Foto da quarta visita">
+                <figcaption>Foto 2</figcaption>
+              </figure>
+              <figure class="visit-photo">
+                <img src="assets/visitas/visita4-3.jpg" alt="Foto da quarta visita">
+                <figcaption>Foto 3</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <article class="visit-record">
+            <div class="visit-meta">
+              <p>Visita técnica</p>
+              <h2>Nome do local 5</h2>
+              <time datetime="2025">2025</time>
+            </div>
+            <div class="visit-gallery">
+              <figure class="visit-photo">
+                <img src="assets/visitas/visita5-1.jpg" alt="Foto da quinta visita">
+                <figcaption>Foto 1</figcaption>
+              </figure>
+              <figure class="visit-photo">
+                <img src="assets/visitas/visita5-2.jpg" alt="Foto da quinta visita">
+                <figcaption>Foto 2</figcaption>
+              </figure>
+              <figure class="visit-photo">
+                <img src="assets/visitas/visita5-3.jpg" alt="Foto da quinta visita">
+                <figcaption>Foto 3</figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <article class="visit-record">
+            <div class="visit-meta">
+              <p>Visita técnica</p>
+              <h2>Nome do local 6</h2>
+              <time datetime="2026">2026</time>
+            </div>
+            <div class="visit-gallery">
+              <figure class="visit-photo">
+                <img src="assets/visitas/visita6-1.jpg" alt="Foto da sexta visita">
+                <figcaption>Foto 1</figcaption>
+              </figure>
+              <figure class="visit-photo">
+                <img src="assets/visitas/visita6-2.jpg" alt="Foto da sexta visita">
+                <figcaption>Foto 2</figcaption>
+              </figure>
+              <figure class="visit-photo">
+                <img src="assets/visitas/visita6-3.jpg" alt="Foto da sexta visita">
+                <figcaption>Foto 3</figcaption>
+              </figure>
+            </div>
+          </article>
+        </section>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal de confirmação ao fechar a janela -->
+  <div class="confirm-overlay" id="confirm-overlay" aria-hidden="true">
+    <section class="confirm-window" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+      <header class="title-bar confirm-titlebar">
+        <div class="window-title"><span class="tiny-computer">▣</span><span>· Confirmação</span></div>
+        <button type="button" class="window-control close" id="dismiss-confirm" aria-label="Voltar">×</button>
+      </header>
+      <div class="confirm-content">
+        <div class="warning-icon">?</div>
+        <div class="confirm-message">
+          <h2 id="confirm-title">Tem certeza?</h2>
+          <p>Deseja mesmo fechar essa janela?</p>
+        </div>
+      </div>
+      <div class="confirm-actions">
+        <button type="button" id="confirm-close" class="pixel-button">Confirmar</button>
+        <button type="button" id="cancel-close" class="pixel-button secondary">Cancelar</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- Interações da interface -->
+  <script src="script.js"></script>
+</body>
+
+</html>
